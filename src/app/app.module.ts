@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -7,6 +8,14 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ViewAllAirlinesComponent } from './view-all-airlines/view-all-airlines.component';
 import { ViewAllPassengersComponent } from './view-all-passengers/view-all-passengers.component';
 
+const appRoutes:Routes=[
+  {
+    path:"",component:ViewAllAirlinesComponent
+  },
+  {
+    path:"passengers",component:ViewAllPassengersComponent
+  }
+]
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +25,8 @@ import { ViewAllPassengersComponent } from './view-all-passengers/view-all-passe
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
