@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-view-all-airlines',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewAllAirlinesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private myapi:ApiService) { 
+    this.fetchData()
+  }
+  fetchData=()=>{
+    this.myapi.viewAirlines().subscribe(
+      (data)=>{
+        this.airlineData=data
+      }
+    )
+  }
 
-  irlineData=[]
+  airlineData:any=[]
 
   ngOnInit(): void {
   }
